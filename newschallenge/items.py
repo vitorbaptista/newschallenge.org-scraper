@@ -9,7 +9,17 @@ import scrapy
 
 
 class EntryItem(scrapy.Item):
-    title = scrapy.Field()
     author = scrapy.Field()
     author_url = scrapy.Field()
+    author_description = scrapy.Field()
+
+    url = scrapy.Field()
+    title = scrapy.Field()
     description = scrapy.Field()
+    short_description = scrapy.Field()
+    one_sentence_description = scrapy.Field()
+    need_description = scrapy.Field()
+    progress_description = scrapy.Field()
+    successful_outcome = scrapy.Field()
+    team = scrapy.Field()
+    location = scrapy.Field()
