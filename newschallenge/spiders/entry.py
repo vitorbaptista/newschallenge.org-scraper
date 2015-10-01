@@ -13,7 +13,7 @@ class EntrySpider(scrapy.spiders.Spider):
     ]
 
     def parse(self, response):
-        for href in response.css(".contribution-list figure a::attr('href')"):
+        for href in response.css(".contribution-list .listing-title a::attr('href')"):
             entry_url = response.urljoin(href.extract())
             yield scrapy.Request(entry_url, callback=self._parse_entry)
 
