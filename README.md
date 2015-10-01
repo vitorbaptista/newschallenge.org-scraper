@@ -1,7 +1,7 @@
 # newschallenge.org scraper
 
 This project scrapes the https://newschallenge.org 2015 entries' data. A copy
-of the most recent scrape I did is inside the `./data` folder.
+of the most recent scrape I did is inside the [./data](./data) folder.
 
 # License
 
