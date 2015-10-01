@@ -39,7 +39,9 @@ class EntrySpider(scrapy.spiders.Spider):
 
         entry["title"] = clean(response.css("[itemprop='name headline']::text")[0])
         entry["short_description"] = clean(response.css("[itemprop='description']::text")[0])
-        entry["description"] = clean(response.css("[itemprop='articleBody'] *")[0])
+        description = response.css("[itemprop='articleBody'] *")
+        if description:
+            entry["description"] = clean(description[0])
 
         for text_field in response.css("section.primary-text"):
             field = self._get_field_name(text_field)
