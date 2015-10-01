@@ -23,7 +23,7 @@ class EntrySpider(scrapy.spiders.Spider):
             yield scrapy.Request(next_page_url)
 
     def _parse_entry(self, response):
-        clean = lambda selector: self._clean(selector)
+        clean = lambda selector: selector.extract().strip()
 
         entry = newschallenge.items.EntryItem()
 
@@ -70,6 +70,3 @@ class EntrySpider(scrapy.spiders.Spider):
         if start_index != -1 and end_index != -1:
             start_index_offset = len("</h1>")
             return text[(start_index + start_index_offset):end_index].strip()
-
-    def _clean(self, selector):
-        return selector.extract().strip()
