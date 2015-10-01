@@ -2,7 +2,7 @@
 
 import scrapy
 
-import newschallenge.items
+import collections
 
 
 class EntrySpider(scrapy.spiders.Spider):
@@ -25,7 +25,9 @@ class EntrySpider(scrapy.spiders.Spider):
     def _parse_entry(self, response):
         clean = lambda selector: selector.extract().strip()
 
-        entry = newschallenge.items.EntryItem()
+        # Use OrderedDict instead of an Item() to be able to order the output
+        # CSV columns. It's a hack.
+        entry = collections.OrderedDict()
 
         entry["url"] = response.url
 
